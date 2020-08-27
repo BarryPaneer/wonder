@@ -41,7 +41,8 @@ class PropertySummarySpider(Spider):
             'Accept-Language': 'en'
         },
         'DOWNLOADER_MIDDLEWARES': {
-            'estate.middlewares.RandomUserAgent': 1
+            'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': 300,
+            'estate.middlewares.RandomUserAgent': 200
         },
         'ITEM_PIPELINES': {
             'estate.spiders.lianjia_properties.pipelines.PropertyInfoPipeline': 300
@@ -49,6 +50,10 @@ class PropertySummarySpider(Spider):
         'ROBOTSTXT_OBEY': False,
         'DOWNLOAD_DELAY': 2,
         'RANDOMIZE_DOWNLOAD_DELAY': True,
+        'HTTPCACHE_ENABLED': True,
+        'HTTPCACHE_EXPIRATION_SECS': 60 * 60 * 24 * 7,  # 7 Days'
+        'HTTPCACHE_STORAGE': 'scrapy.extensions.httpcache.'
+                             'FilesystemCacheStorage',
         'COOKIES_ENABLED': False,
         'TELNETCONSOLE_ENABLED': False,
         'COMMANDS_MODULE': 'estate.spiders.lianjia_properties.commands'

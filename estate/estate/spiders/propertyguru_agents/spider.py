@@ -76,7 +76,7 @@ class SingaporeAgents(JuwaiSpider):
             '.AgentsPipeline': 300,
         },
         'DOWNLOADER_MIDDLEWARES': {
-            'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': 100,
+            'scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware': 900,
             'estate.middlewares.ExclusiveCDPDownloaderMiddleware': 800
         },
         'ROBOTSTXT_OBEY': False,
